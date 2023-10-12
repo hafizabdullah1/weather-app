@@ -6,8 +6,6 @@ let url = `https://api.openweathermap.org/data/2.5/weather?q=lahore&appid=${key}
 
 fetch(url).then((res) => {
     res.json().then((data => {
-        console.log("data", data);
-        a = data
         disp.innerHTML = `${parseInt(data.main.temp)}<sup>°</sup>`
         li1.innerText = `Weather: \n ${data.weather[0].main}`
         li2.innerText = `Humidty: \n ${data.main.humidity}`
@@ -18,35 +16,38 @@ fetch(url).then((res) => {
         if (data.weather[0].main == 'Smoke') {
             document.querySelector('body').style.backgroundImage = "url(./img/Smoke.jpg)"
         }
-        if (data.weather[0].main == 'Clear') {
+        else if (data.weather[0].main == 'Clear') {
             document.querySelector('body').style.backgroundImage = "url(./img/Clear.jpg)"
         }
-        if (data.weather[0].main == 'Mist') {
+        else if (data.weather[0].main == 'Mist') {
             document.querySelector('body').style.backgroundImage = "url(./img/Mist1.jpg)"
         }
-        if (data.weather[0].main == 'Storm') {
+        else if (data.weather[0].main == 'Storm') {
             document.querySelector('body').style.backgroundImage = "url(./img/Storm.jpg)"
         }
-        if (data.weather[0].main == 'Drizzle') {
+        else if (data.weather[0].main == 'Drizzle') {
             document.querySelector('body').style.backgroundImage = "url(./img/Drizzle.jpg)"
         }
-        if (data.weather[0].main == 'Daze') {
+        else if (data.weather[0].main == 'Daze') {
             document.querySelector('body').style.backgroundImage = "url(./img/Daze.jpg)"
         }
-        if (data.weather[0].main == 'Clouds') {
+        else if (data.weather[0].main == 'Clouds') {
             document.querySelector('body').style.backgroundImage = "url(./img/Cloud.jpg)"
         }
-        if (data.weather[0].main == 'Rain') {
+        else if (data.weather[0].main == 'Rain') {
             document.querySelector('body').style.backgroundImage = "url(./img/Rain2.jpg)"
         }
-        if (data.weather[0].main == 'Dust') {
+        else if (data.weather[0].main == 'Dust') {
             document.querySelector('body').style.backgroundImage = "url(./img/Dust.jpg)"
         }
-        if (data.weather[0].main == 'Fog') {
+        else if (data.weather[0].main == 'Fog') {
             document.querySelector('body').style.backgroundImage = "url(./img/Fog1.jpg)"
         }
         else if (stat == 'Haze') {
             document.querySelector('body').style.backgroundImage = "url(./img/haze.jpeg)"
+        }
+        else {
+            document.querySelector('body').style.backgroundImage = "url(./img/Clear.jpg)"
         }
     }))
 })
@@ -66,7 +67,6 @@ let display = () => {
             li4.innerText = `Feels_like: \n ${data.main.feels_like}`
             document.getElementById('city').innerText = `${data.name}`
             document.querySelector('input').value = "";
-
 
             if (stat == 'Smoke') {
                 document.querySelector('body').style.backgroundImage = "url(./img/Smoke.jpg)"
@@ -103,9 +103,7 @@ let display = () => {
             }
             else {
                 document.querySelector('body').style.backgroundImage = "url(./img/Clear.jpg)"
-                console.log("else");
             }
-            console.log(stat);
         }))
     })
 }

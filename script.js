@@ -45,12 +45,13 @@ fetch(url).then((res) => {
         if (data.weather[0].main == 'Fog') {
             document.querySelector('body').style.backgroundImage = "url(./img/Fog1.jpg)"
         }
-
+        else if (stat == 'Haze') {
+            document.querySelector('body').style.backgroundImage = "url(./img/haze.jpeg)"
+        }
     }))
 })
 
 let stat;
-
 let display = () => {
     city = inp.value
     url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=metric`
@@ -100,7 +101,7 @@ let display = () => {
             else if (stat == 'Haze') {
                 document.querySelector('body').style.backgroundImage = "url(./img/haze.jpeg)"
             }
-            else{
+            else {
                 document.querySelector('body').style.backgroundImage = "url(./img/Clear.jpg)"
                 console.log("else");
             }
@@ -108,7 +109,6 @@ let display = () => {
         }))
     })
 }
-
 document.getElementById('city').innerText = `${city}`
 
 let dte = () => {
